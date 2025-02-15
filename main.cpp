@@ -6,13 +6,8 @@
 
 using namespace std;
 
-int parte = 0;
-
-void dividirArchivo(){
-    //int lineasArch = 262144; el salto de linea es tomado como un byte
-    //int partes = 16;
-
-    ifstream archivo("data.txt",ios::binary);
+void dividirArchivo() {
+    ifstream archivo("data.txt", ios::binary);
 
     int lineasPorArchivo = 262144;
     int parte = 0;
@@ -29,7 +24,7 @@ void dividirArchivo(){
 
         sort(lineas.begin(), lineas.end());
 
-        ofstream archfin("Archivo0" + to_string(parte) + ".txt", ios::binary);
+        ofstream archfin("Archivo" + to_string(parte) + ".txt", ios::binary);
         for (const auto& linea : lineas) {
             archfin.write(linea.data(), 257);
         }
@@ -40,12 +35,13 @@ void dividirArchivo(){
     archivo.close();
 }
 
+
 void ordenararchivos() {
-    ios::sync_with_stdio(false); //Optimiza algunos procesos de enviar y recibir datos pero desactiva el uso de cin y cout
+    ios::sync_with_stdio(false);
     int currarch = 0;
     string linea0, linea1, nombrefinal;
 
-    while (currarch < 16) {
+    while (currarch < 15) {
         nombrefinal = (currarch == 14) ? "sorted_complete.txt" : "Archivo0" + to_string(currarch + 1) + ".txt";
         string archivo0 = (currarch == 0) ? "Archivo0.txt" : "Archivo0" + to_string(currarch) + ".txt";
         string archivo1 = "Archivo" + to_string(currarch + 1) + ".txt";
@@ -88,9 +84,8 @@ void ordenararchivos() {
     }
 }
 
-
-int main(){
+int main() {
     dividirArchivo();
-
+    ordenararchivos();
     return 0;
 }
