@@ -34,7 +34,8 @@ _YOUR DOCUMENTATION_
 
 ## How to run
 
-_YOUR DOCUMENTATION_
+Con esta linea en la terminarl se compila y se corre el codigo por lo menos asi es en Ubuntu
+g++ main.cpp -o main.out -std=c++11 && ./main.out
 
 ## Test Cases
 
